@@ -1,0 +1,22 @@
+<!-- post-product.component.html -->
+
+<!-- Formulário -->
+<button (click)="redirectTo('/')">Voltar para tela inicial</button>
+
+<div class="form-container">
+    <form (ngSubmit)="addProduct()">
+      <label>Title: <input type="text" [(ngModel)]="productData.title" name="title"></label><br>
+      <!-- Adicione campos para outros dados do produto, conforme necessário -->
+      <button type="submit">Adicionar Produto</button>
+    </form>
+  </div>
+  
+  <!-- Lista de produtos -->
+  <div class="product-list-container">
+    <h2>Produtos:</h2>
+    <ul class="product-list">
+      <li *ngFor="let product of productList">{{ product.title }}</li>
+      <!-- Exibir outros detalhes do produto conforme necessário -->
+    </ul>
+  </div>
+  

@@ -1,0 +1,13 @@
+<p>login works!</p>
+
+<form class="login-form" (submit)="login()">
+  <input type="text" [(ngModel)]="username" name="username" placeholder="Username" class="input-field">
+  <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="input-field">
+  <button type="submit" class="login-button">Login</button>
+</form>
+
+  <div *ngIf="userData">
+    <p>Bem-vindo, {{ userData.name }}!</p> <!-- Supondo que o objeto do usuário tenha uma propriedade 'name' -->
+    <p>Email: {{ userData.email }}</p> <!-- Supondo que o objeto do usuário tenha uma propriedade 'email' -->
+    <!-- Adicione outras propriedades do usuário conforme necessário -->
+  </div>
