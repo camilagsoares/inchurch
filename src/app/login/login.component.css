@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Faz com que o contêiner ocupe 100% da altura da tela */
+  height: 100vh;
 }
 
 .login-form {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px; /* Aumenta o preenchimento interno para aumentar a altura do formulário */
+  padding: 40px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f9f9f9;
@@ -17,23 +17,23 @@
 
 .input-field {
   width: calc(100% - 20px);
-  margin-bottom: 20px; /* Aumenta a margem inferior para separar os campos de entrada */
-  padding: 15px; /* Aumenta o preenchimento interno dos campos de entrada */
+  margin-bottom: 20px;
+  padding: 15px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
-  font-size: 16px; /* Aumenta o tamanho da fonte nos campos de entrada */
+  font-size: 16px; 
 }
 
 .login-button {
   width: calc(100% - 20px);
-  padding: 15px; /* Aumenta o tamanho do botão */
+  padding: 15px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
-  font-size: 16px; /* Aumenta o tamanho da fonte do botão */
+  font-size: 16px;
 }
 
 .login-button:hover {
@@ -47,6 +47,6 @@
 }
 @media (max-width: 767px) {
   .login-form {
-    margin: 20px; /* Define a margem desejada para dispositivos móveis */
+    margin: 20px; 
   }
 }

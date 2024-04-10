@@ -21,12 +21,9 @@ export class LoginComponent {
       response => {
         this.userData = response.user;
         this.loggedIn = true;
-        this.clearFields(); // Limpa os campos do formulário
-
-        // Exibir mensagem de sucesso (você pode usar um serviço de mensagens para isso)
+        this.clearFields(); 
         alert('Login bem-sucedido!');
 
-        // Redirecionar para a home ("/")
         this.router.navigate(['/']);
       },
       error => {
