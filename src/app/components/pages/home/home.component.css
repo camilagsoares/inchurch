@@ -9,6 +9,29 @@
   align-items: center;
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.btn-details {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: #f0f0f0;
+}
+
+
 button {
   padding: 8px 16px;
   margin: 0 5px;
@@ -111,11 +134,8 @@ button:disabled:hover {
 
 .product-card:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* Adiciona uma sombra ao cartão quando o mouse passa por cima */
   transform: translateY(-5px);
-  /* Move o cartão para cima quando o mouse passa por cima */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  /* Adiciona uma transição suave */
   cursor: pointer;
 }
 
@@ -136,16 +156,13 @@ button:disabled:hover {
 .select-wrapper,
 .create-button-wrapper {
   display: flex;
-  /* Define os elementos para serem exibidos como flexíveis */
   align-items: center;
-  /* Alinha os itens verticalmente */
 }
 
 .search-bar-wrapper input,
 .select-wrapper select,
 .create-button {
   margin-right: 10px;
-  /* Espaçamento entre os elementos */
 }
 
 input,
@@ -178,3 +195,5 @@ select {
 
   background: transparent;
 }
+
+
