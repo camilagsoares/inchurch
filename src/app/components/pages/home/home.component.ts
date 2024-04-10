@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, TemplateRef, OnInit , ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
@@ -19,11 +19,14 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 14;
   selectedProduct: any = null;
-  faPlusCircle= faPlusCircle
+  faPlusCircle = faPlusCircle
+  isMenuOpen: boolean = false;
 
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
 
+
+  
   ngOnInit() {
     this.getData();
   }
@@ -142,7 +145,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  addToCart(productId: number) {
+  addToCart(event: Event, productId: number) {
+    event.stopPropagation();
     fetch('https://dummyjson.com/products/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -153,12 +157,16 @@ export class HomeComponent implements OnInit {
       .then(res => res.json())
       .then(newProduct => {
         console.log('Product added to cart:', newProduct);
-
+        this.isMenuOpen = true; 
       })
       .catch(error => {
         console.error('Error adding product to cart:', error);
 
       });
-      this.showCart = true;
+    this.showCart = true;
+  }
+  
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }
