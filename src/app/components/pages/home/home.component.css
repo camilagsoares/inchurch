@@ -219,4 +219,25 @@ select {
   background: transparent;
 }
 
+@media screen and (max-width: 600px) {
+  .filters-container {
+    flex-direction: column;
+  }
 
+  .filters-left {
+    width: 100%;
+  }
+
+  .search-bar-wrapper,
+  .select-wrapper,
+  .create-button-wrapper {
+    width: 250px; 
+    margin-bottom: 10px;
+  }
+
+  .search-bar-wrapper input,
+  .select-wrapper select,
+  .create-button {
+    width: 100%;
+  }
+}
