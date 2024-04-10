@@ -13,3 +13,19 @@ Esta é uma aplicação de E-commerce desenvolvida com Angular, CSS e JavaScript
 
 * **Página Detalhes do Produto:** Cada produto possui uma página detalhada com informações abrangentes.
 
+<hr />
+
+# Como Rodar a Aplicação
+
+Para executar esta aplicação localmente, siga os passos abaixo:
+
+## 1. Instalar Dependências
+
+
+```bash
+npm install
+
+
+## 2.  Rodar o Servidor de Desenvolvimento
+
+ng serve
