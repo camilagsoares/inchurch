@@ -10,6 +10,10 @@
 }
 
 .button-container {
+  position: absolute;
+  bottom: 5px; 
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: space-between;
 }
@@ -68,8 +72,10 @@ button:disabled:hover {
   overflow: hidden;
   position: relative;
   width: 250px;
+  height: 320px;
   margin: 10px; 
   margin-bottom: 20px; 
+  position: relative;
 }
 
 
@@ -85,7 +91,7 @@ button:disabled:hover {
 
 .card-title {
   margin: 0;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .card-text {
