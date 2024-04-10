@@ -25,25 +25,23 @@
 </div>
 
 
-<div *ngIf="selectedCategory" class="selected-category">
-  <h2>Selected Category: {{ selectedCategory }}</h2>
-</div>
-
 <div *ngIf="paginatedProducts.length > 0; else noProducts">
-
   <div class="product-grid">
     <div class="card product-card" *ngFor="let product of paginatedProducts" (click)="goToProductDetails(product.id)">
       <img [src]="product.images[0]" alt="Product Image" class="product-image">
       <div class="card-body">
         <h3 class="card-title">{{ product.title }}</h3>
         <p class="card-text">Price: {{ product.price }}</p>
-<button type="button" (click)="deleteProduct($event, product.id)" class="btn-delete">Deletar</button>
-        <button type="button" (click)="addToCart(product.id)" class="btn-add-to-cart">Adicionar ao carrinho</button>
-
-        <button>Detalhes</button>
+        <div class="button-container">
+          <button type="button" (click)="deleteProduct($event, product.id)" class="btn-delete">Deletar</button>
+          <button type="button" (click)="addToCart(product.id)" class="btn-add-to-cart">Adicionar</button>
+          <button class="btn-details"  (click)="goToProductDetails(product.id)">Detalhes</button>
+        </div>
       </div>
     </div>
   </div>
+
+
 
 
 
