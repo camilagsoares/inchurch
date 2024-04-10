@@ -12,7 +12,7 @@ import { EditModalComponent } from '../edit-modal/edit-modal.component';
 })
 export class ProductDetailsComponent implements OnInit {
   productId: string | null = null;
-  productDetails: any = { selectedImage: '', images: [] }; // Começa com uma imagem vazia
+  productDetails: any = { selectedImage: '', images: [] }; 
   isEditingPrice: boolean = false;
   isEditingStock: boolean = false;
   isEditingCategory: boolean = false;
@@ -21,6 +21,8 @@ export class ProductDetailsComponent implements OnInit {
   isEditing: boolean = false;
   isEditingTitle: boolean = false;
   editedTitle: string = '';
+  isEditingDescription: boolean = false;
+editedDescription: string = '';
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
@@ -41,7 +43,7 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(product => {
         this.productDetails = product;
         this.editedTitle = product.title;
-        // Definir a primeira imagem como a imagem selecionada
+
         if (product.images.length > 0) {
           this.productDetails.selectedImage = product.images[0];
         }
@@ -91,14 +93,12 @@ export class ProductDetailsComponent implements OnInit {
     if (this.productId) {
       const updatedData = {
         title: this.editedTitle
-        // Adicione outros campos editáveis aqui, se necessário
       };
 
       this.productService.updateProduct(this.productId, updatedData)
         .subscribe(
           (updatedProduct) => {
             this.productDetails.title = updatedProduct.title;
-            // Atualize outros campos editáveis aqui, se necessário
             this.isEditingTitle = false;
           },
           (error) => {
@@ -110,43 +110,67 @@ export class ProductDetailsComponent implements OnInit {
 
   cancelEditTitle() {
     this.editedTitle = this.productDetails.title;
-    // Reverta quaisquer outras alterações feitas em outros campos aqui, se necessário
     this.isEditingTitle = false;
   }
 
 
   openModal() {
     this.isEditing = true;
-    // Inicialize os campos editáveis com os valores atuais
     this.editedTitle = this.productDetails.title;
+    this.editedDescription = this.productDetails.description;
+
   }
 
   closeModal() {
     this.isEditing = false;
   }
 
-
-
   cancelEdit() {
-    // Lógica para cancelar a edição
     this.closeModal();
   }
 
   openEditModal(): void {
     const dialogRef = this.dialog.open(EditModalComponent, {
       width: '500px',
-      height: '240px',
-     // Defina o tamanho do modal conforme necessário
-      data: { title: this.productDetails.title /* outros campos aqui */ }
+      height: '270px',
+     data: { title: this.productDetails.title, description: this.productDetails.description /* outros campos aqui */ }
+
     });
   
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result) {
-        // Atualize os dados com as alterações, se necessário
         this.productDetails.title = result.title;
-        // Atualize outros campos conforme necessário
+        this.productDetails.description = result.description;
       }
     });
+  }
+
+  enableEditingDescription() {
+    this.isEditingDescription = true;
+  }
+  
+  saveDescription() {
+    if (this.productId) {
+      const updatedData = {
+        description: this.editedDescription
+      };
+  
+      this.productService.updateProduct(this.productId, updatedData)
+        .subscribe(
+          (updatedProduct) => {
+            this.productDetails.description = updatedProduct.description;
+            this.isEditingDescription = false;
+          },
+          (error) => {
+            console.error('Erro ao atualizar produto:', error);
+          }
+        );
+    }
+  }
+  
+  cancelEditDescription() {
+    this.editedDescription = this.productDetails.description;
+    this.isEditingDescription = false;
   }
 }
