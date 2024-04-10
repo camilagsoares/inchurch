@@ -37,10 +37,11 @@
       <div class="card-body">
         <h3 class="card-title">{{ product.title }}</h3>
         <p class="card-text">Price: {{ product.price }}</p>
-        <button type="button" (click)="deleteProduct($event, product.id)" class="btn-delete">Deletar</button>
-        <!-- <button class="btn-add-to-cart">
-          Adicionar ao carrinho</button> -->
+<button type="button" (click)="deleteProduct($event, product.id)" class="btn-delete">Deletar</button>
+
+        <!-- <button type="button" (click)="addToCart(product.id)" class="btn-add-to-cart">Adicionar ao carrinho</button> -->
         <button type="button" (click)="addToCart(product.id)" class="btn-add-to-cart">Adicionar ao carrinho</button>
+
         <button>Detalhes</button>
       </div>
     </div>
