@@ -45,7 +45,8 @@ button:disabled:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
-  position: relative; /* Adiciona posição relativa para referenciar elementos internos */
+  position: relative;
+  /* Adiciona posição relativa para referenciar elementos internos */
 }
 
 .product-image {
@@ -71,23 +72,25 @@ button:disabled:hover {
 .btn-delete {
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #ff0000;
-  color: #fff;
+  background-color: #E62222;
+  color: white;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  font-size: 13px;
 }
 
 .btn-delete:hover {
   background-color: #cc0000;
 }
 
+
 .btn-add-to-cart {
   position: absolute;
   bottom: 10px;
   right: 10px;
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #A7CE4A;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -95,7 +98,7 @@ button:disabled:hover {
 }
 
 .btn-add-to-cart:hover {
-  background-color: #0056b3;
+  background-color: #91b440;
 }
 
 .product-card:hover {
@@ -118,35 +121,60 @@ button:disabled:hover {
 
 .filters-container {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 20px;
   margin: 20px;
 }
 
+.filters-left {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .search-bar-wrapper,
-.select-wrapper {
-  margin-right: 20px;
+.select-wrapper,
+.create-button-wrapper {
+  display: flex;
+  /* Define os elementos para serem exibidos como flexíveis */
+  align-items: center;
+  /* Alinha os itens verticalmente */
+}
+
+.search-bar-wrapper input,
+.select-wrapper select,
+.create-button {
+  margin-right: 10px;
   /* Espaçamento entre os elementos */
-  margin-bottom: 20px;
-  /* Espaçamento entre as linhas */
 }
 
 input,
-select {
+select,
+.create-button {
   outline: none;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  width: 200px;
 }
 
 select {
   cursor: pointer;
 }
 
-.selected-category {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
+.create-button {
+  background-color: #a0a6aa;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: #83888c;
+}
+
+.create-button mat-icon {
+  color: #fff;
+
+  background: transparent;
 }

@@ -1,22 +1,46 @@
-<!-- post-product.component.html -->
-
-<!-- Formulário -->
-<button (click)="redirectTo('/')">Voltar para tela inicial</button>
+<div class="create-button-wrapper">
+  <button (click)="redirectTo('/')" class="create-button">
+    <mat-icon>add_circle_outline</mat-icon>
+    Voltar para o início
+  </button>
+</div>
 
 <div class="form-container">
-    <form (ngSubmit)="addProduct()">
-      <label>Title: <input type="text" [(ngModel)]="productData.title" name="title"></label><br>
-      <!-- Adicione campos para outros dados do produto, conforme necessário -->
-      <button type="submit">Adicionar Produto</button>
-    </form>
-  </div>
-  
-  <!-- Lista de produtos -->
-  <div class="product-list-container">
-    <h2>Produtos:</h2>
+  <form (ngSubmit)="addProduct()">
+    <div class="form-group">
+      <label for="title">Título:</label>
+      <input type="text" [(ngModel)]="productData.title" name="title" id="title" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Preço:</label>
+      <input type="number" [(ngModel)]="productData.price" name="price" id="price" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Descrição:</label>
+      <textarea [(ngModel)]="productData.description" name="description" id="description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="photo">Foto:</label>
+      <input type="file" (change)="onFileChange($event)" accept="image/*">
+    </div>
+    <button type="submit">Adicionar Produto</button>
+  </form>
+</div>
+
+
+<!-- Lista de produtos -->
+<div class="product-list-container">
+  <h2>Produtos:</h2>
+  <div *ngIf="productList.length > 0">
     <ul class="product-list">
-      <li *ngFor="let product of productList">{{ product.title }}</li>
-      <!-- Exibir outros detalhes do produto conforme necessário -->
+      <li *ngFor="let product of productList">
+        {{ product.title }} - {{ product.price | currency }}<br>
+        {{ product.description }}
+      </li>
     </ul>
   </div>
-  
+
+  <div *ngIf="productList.length === 0">
+    <p>Nenhum produto postado ainda.</p>
+  </div>
+</div>

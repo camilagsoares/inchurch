@@ -8,22 +8,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-product.component.css']
 })
 export class PostProductComponent implements OnInit {
-  productData: any = {};
-  productList: any[] = []; // Lista de produtos
+  productData: any = {
+    title: '',
+    price: 0,
+    description: '',
+    photo: ''
+  };
+  productList: any[] = [];
+  showProductList: boolean = false;
 
-  constructor(private productService: ProductService,private router: Router) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.productList = []; // Inicialize aqui, se necessário
     this.fetchProducts();
   }
 
-
   fetchProducts() {
-    // Chamar o serviço para obter a lista de produtos
     this.productService.getProducts().subscribe(
       products => {
-        this.productList = products;
+        this.productList = Array.isArray(products) ? products : [];
+        this.showProductList = this.productList.length > 0;
       },
       error => {
         console.error('Erro ao obter produtos:', error);
@@ -32,30 +36,36 @@ export class PostProductComponent implements OnInit {
   }
 
   addProduct() {
-    // Verificar se algum campo obrigatório está vazio
     if (!this.productData.title || this.productData.title.trim() === '') {
       alert('Por favor, preencha o título do produto.');
-      return; // Impedir a submissão do formulário se o título estiver vazio
+      return;
     }
-  
-    // Você pode adicionar mais verificações para outros campos aqui, se necessário
-  
-    // Continuar com a adição do produto se todos os campos obrigatórios estiverem preenchidos
+
+    if (!this.productData.price || this.productData.price <= 0) {
+      alert('Por favor, preencha um preço válido para o produto.');
+      return;
+    }
+
+    if (!this.productData.description || this.productData.description.trim() === '') {
+      alert('Por favor, preencha a descrição do produto.');
+      return;
+    }
+
     this.productService.addProduct(this.productData)
       .subscribe(
         response => {
           console.log('Novo produto adicionado:', response);
-          // Adicionar o produto à lista após adição bem-sucedida
-          if (!Array.isArray(this.productList)) {
-            this.productList = []; // Garantir que productList seja uma matriz
-          }
           this.productList.push(response);
-          // Limpar os campos do formulário após adicionar o produto
-          this.productData = {};
+          this.showProductList = true;
+          this.productData = {
+            title: '',
+            price: 0,
+            description: '',
+            photo: ''
+          };
         },
         error => {
           console.error('Erro ao adicionar produto:', error);
-          // Adicionar lógica de tratamento de erro aqui, como exibir uma mensagem para o usuário.
         }
       );
   }
@@ -64,5 +74,7 @@ export class PostProductComponent implements OnInit {
     this.router.navigate([route]);
   }
 
-  
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+  }
 }

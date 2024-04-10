@@ -1,26 +1,30 @@
-<!-- MEU CODIGO -->
 <div class="filters-container">
-  <div class="search-bar-wrapper">
-    <input type="text" [(ngModel)]="searchTerm" (input)="filterProducts()" placeholder="Search...">
+  <div class="filters-left">
+    <div class="search-bar-wrapper">
+      <input type="text" [(ngModel)]="searchTerm" (input)="filterProducts()" placeholder="Pesquise...">
+    </div>
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
+        <option value="">Filtrar por categoria</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    <div class="select-wrapper">
+      <select [(ngModel)]="selectedBrand" (change)="filterProducts()">
+        <option value="">Filtrar por marca</option>
+        <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+      </select>
+    </div>
   </div>
-  <div class="select-wrapper">
-    <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
-      <option value="">All Categories</option>
-      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-    </select>
+  <div class="create-button-wrapper">
+    <button (click)="redirectTo('/post')" class="create-button">
+      <mat-icon>add_circle_outline</mat-icon>
+      Adicionar Novo Produto
+    </button>
   </div>
-  <div class="select-wrapper">
-    <select [(ngModel)]="selectedBrand" (change)="filterProducts()">
-      <option value="">All Brands</option>
-      <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
-    </select>
-  </div>
-  
-  <button (click)="redirectTo('/post')">
-    <mat-icon>add_circle_outline</mat-icon>
-    Adicionar Novo Produto
-  </button>
 </div>
+
+
 <div *ngIf="selectedCategory" class="selected-category">
   <h2>Selected Category: {{ selectedCategory }}</h2>
 </div>
@@ -39,6 +43,7 @@
       </div>
     </div>
   </div>
+
 
 
 

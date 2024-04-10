@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   brands: string[] = []; // Adicionando array para armazenar marcas
   filteredProducts: any[] = [];
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 14;
   selectedProduct: any = null;
   
   constructor(private router: Router, private snackBar: MatSnackBar) { }
@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
         this.filteredProducts = data.products;
         this.extractCategories(data.products);
         this.extractBrands(data.products); // Extrair marcas
+        this.pageSize = Math.ceil(this.filteredProducts.length / Math.ceil(this.filteredProducts.length / 15));
 
         console.log(data)
       })
