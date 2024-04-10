@@ -10,15 +10,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class HomeComponent implements OnInit {
   data: any;
   selectedCategory: string = '';
-  selectedBrand: string = ''; // Adicionando variável para armazenar a marca selecionada
+  selectedBrand: string = '';
   searchTerm: string = '';
   categories: string[] = [];
-  brands: string[] = []; // Adicionando array para armazenar marcas
+  brands: string[] = [];
   filteredProducts: any[] = [];
   currentPage: number = 1;
   pageSize: number = 14;
   selectedProduct: any = null;
-  
+
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
 
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
         this.data = data;
         this.filteredProducts = data.products;
         this.extractCategories(data.products);
-        this.extractBrands(data.products); // Extrair marcas
+        this.extractBrands(data.products);
         this.pageSize = Math.ceil(this.filteredProducts.length / Math.ceil(this.filteredProducts.length / 15));
 
         console.log(data)
@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
 
- filterProducts() {
+  filterProducts() {
     let filteredByCategoryAndBrand = this.data.products;
 
     if (this.selectedCategory) {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
       );
     }
 
-    const trimmedSearchTerm = this.searchTerm.trim(); // Remover espaços em branco extras
+    const trimmedSearchTerm = this.searchTerm.trim();
     if (trimmedSearchTerm) {
       this.filteredProducts = filteredByCategoryAndBrand.filter((product: any) =>
         product.title.toLowerCase().includes(trimmedSearchTerm.toLowerCase())
@@ -78,7 +78,6 @@ export class HomeComponent implements OnInit {
       this.filteredProducts = filteredByCategoryAndBrand;
     }
 
-    // Atualize as páginas ao filtrar
     this.currentPage = 1;
   }
 
@@ -101,8 +100,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  deleteProduct(productId: number) {
-    
+  deleteProduct(event: Event, productId: number) {
+    event.stopPropagation();
+
     fetch(`https://dummyjson.com/products/${productId}`, {
       method: 'DELETE',
     })
@@ -110,25 +110,24 @@ export class HomeComponent implements OnInit {
       .then(deletedProduct => {
         if (deletedProduct.isDeleted && deletedProduct.deletedOn) {
           console.log(`Product ${productId} deleted on ${deletedProduct.deletedOn}`);
-          // Remove o produto excluído da lista filteredProducts
+
           this.filteredProducts = this.filteredProducts.filter((product: any) => product.id !== productId);
-          // Exibe a mensagem de sucesso
           this.snackBar.open(`Produto ${productId} deletado com sucesso`, 'Close', {
-            duration: 3000, // Duração da mensagem em milissegundos (3 segundos neste caso)
+            duration: 3000,
           });
         } else {
           console.error(`Failed to delete product ${productId}`);
-          // Exibe uma mensagem de erro caso falhe a exclusão
+
           this.snackBar.open(`Failed to delete product ${productId}`, 'Close', {
-            duration: 3000, // Duração da mensagem em milissegundos (3 segundos neste caso)
+            duration: 3000,
           });
         }
       })
       .catch(error => {
         console.error(`Error deleting product ${productId}:`, error);
-        // Exibe uma mensagem de erro caso ocorra um erro durante a exclusão
+
         this.snackBar.open(`Error deleting product ${productId}`, 'Close', {
-          duration: 3000, // Duração da mensagem em milissegundos (3 segundos neste caso)
+          duration: 3000,
         });
       });
   }
@@ -146,17 +145,17 @@ export class HomeComponent implements OnInit {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: productId // Assuming productId is the unique identifier for the product
+        id: productId
       })
     })
       .then(res => res.json())
       .then(newProduct => {
         console.log('Product added to cart:', newProduct);
-        // Here you can handle the response, maybe update the UI or show a success message
+
       })
       .catch(error => {
         console.error('Error adding product to cart:', error);
-        // Handle error, show error message, etc.
+
       });
   }
 }
