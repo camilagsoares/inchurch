@@ -1,15 +1,27 @@
 <div class="product-details-container">
     <button (click)="goToHome()" class="back-button">Back to Home</button>
     <div *ngIf="productDetails" class="product-details">
-        <img [src]="productDetails.images[0]" alt="Product Image" class="product-image">
-        <h2 *ngIf="!isEditingTitle" class="product-title">{{ productDetails.title }}</h2>
-        <input *ngIf="isEditingTitle" [(ngModel)]="editedTitle" type="text" class="edit-input">
-        <p class="product-description">{{ productDetails.description }}</p>
-        <div class="product-info">
-            <p class="product-price">Price: {{ productDetails.price }}</p>
-            <p class="product-stock">Stock: {{ productDetails.stock }}</p>
+        <div class="image-container">
+            <img [src]="productDetails.thumbnail" alt="Product Image" class="product-image">
         </div>
-        <button *ngIf="!isEditing" (click)="enableEditing()" class="edit-button">Edit</button>
-        <button *ngIf="isEditing" (click)="saveChanges()" class="save-button">Save</button>
+        <div class="details-container">
+            <div class="title-description-container">
+                <h2 *ngIf="!isEditingTitle" class="product-title">{{ productDetails.title }}</h2>
+                <input *ngIf="isEditingTitle" [(ngModel)]="editedTitle" type="text" class="edit-input">
+                <p class="product-description">{{ productDetails.description }}</p>
+            </div>
+            <div class="product-info">
+                <p class="product-price">Price: {{ productDetails.price }}</p>
+                <p class="product-stock">Stock: {{ productDetails.stock }}</p>
+                <p class="product-discount">Discount: {{ productDetails.discountPercentage }}%</p>
+                <p class="product-rating">Rating: {{ productDetails.rating }}</p>
+                <p class="product-brand">Brand: {{ productDetails.brand }}</p>
+                <p class="product-category">Category: {{ productDetails.category }}</p>
+            </div>
+            <div class="buttons-container">
+                <button *ngIf="!isEditing" (click)="enableEditing()" class="edit-button">Edit</button>
+                <button *ngIf="isEditing" (click)="saveChanges()" class="save-button">Save</button>
+            </div>
+        </div>
     </div>
 </div>

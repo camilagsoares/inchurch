@@ -141,4 +141,22 @@ export class HomeComponent implements OnInit {
     this.router.navigate([route]);
   }
 
+  addToCart(productId: number) {
+    fetch('https://dummyjson.com/products/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: productId // Assuming productId is the unique identifier for the product
+      })
+    })
+      .then(res => res.json())
+      .then(newProduct => {
+        console.log('Product added to cart:', newProduct);
+        // Here you can handle the response, maybe update the UI or show a success message
+      })
+      .catch(error => {
+        console.error('Error adding product to cart:', error);
+        // Handle error, show error message, etc.
+      });
+  }
 }

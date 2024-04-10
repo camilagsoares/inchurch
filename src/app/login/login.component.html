@@ -1,14 +1,14 @@
 <div class="login-container">
 
   <form class="login-form" (submit)="login()">
-    <input type="text" [(ngModel)]="username" name="username" placeholder="Username" class="input-field">
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" class="input-field">
+    <input type="text" [(ngModel)]="username" name="username" placeholder="Nome de usuário" class="input-field">
+    <input type="password" [(ngModel)]="password" name="password" placeholder="Senha" class="input-field">
     <button type="submit" class="login-button">Login</button>
   </form>
 
-  <div *ngIf="userData">
-    <p>Bem-vindo, {{ userData.name }}!</p> <!-- Supondo que o objeto do usuário tenha uma propriedade 'name' -->
-    <p>Email: {{ userData.email }}</p> <!-- Supondo que o objeto do usuário tenha uma propriedade 'email' -->
-    <!-- Adicione outras propriedades do usuário conforme necessário -->
+  <div *ngIf="loggedIn">
+    <h2>Dados do Usuário</h2>
+    <p><strong>Nome de Usuário:</strong> {{ userData.username }}</p>
+    <p><strong>Email:</strong> {{ userData.email }}</p>
   </div>
 </div>

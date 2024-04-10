@@ -37,7 +37,6 @@ button:disabled:hover {
   margin: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
 }
 
 .product-card {
@@ -46,8 +45,9 @@ button:disabled:hover {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  /* Adiciona posição relativa para referenciar elementos internos */
+  width: 250px;
 }
+
 
 .product-image {
   width: 100%;

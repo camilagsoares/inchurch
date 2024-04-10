@@ -15,17 +15,26 @@
 }
 
 .product-details {
+    display: flex;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.image-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
 .product-image {
     max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
     border-radius: 10px;
+}
+
+.details-container {
+    flex: 2;
 }
 
 .product-title {
@@ -48,6 +57,10 @@
     font-size: 18px;
 }
 
+.buttons-container {
+    margin-top: 20px;
+}
+
 /* Estilos responsivos */
 @media screen and (max-width: 768px) {
     .product-details-container {
@@ -59,4 +72,18 @@
     .product-details-container {
         width: 100%;
     }
+
+    .product-details {
+        flex-direction: column;
+    }
+
+    .image-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .details-container {
+        flex: none;
+    }
 }
+

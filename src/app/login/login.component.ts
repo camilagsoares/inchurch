@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -8,23 +9,34 @@ import { AuthService } from './auth.service';
 })
 export class LoginComponent {
 
-  username: string = ''; // Inicialização da propriedade username
+  username: string = '';
   password: string = '';
-  userData: any; 
+  userData: any;
+  loggedIn: boolean = false;
 
-  constructor(private authService: AuthService) { }
-
+  constructor(private authService: AuthService, private router: Router) { }
 
   login(): void {
     this.authService.login(this.username, this.password).subscribe(
       response => {
-        console.log(response); // Faça algo com o token retornado pela API, como armazená-lo no localStorage
-        // Armazena os dados do usuário retornado
-        this.userData = response.user; // Supondo que a resposta contenha um objeto de usuário
+        this.userData = response.user;
+        this.loggedIn = true;
+        this.clearFields(); // Limpa os campos do formulário
+
+        // Exibir mensagem de sucesso (você pode usar um serviço de mensagens para isso)
+        alert('Login bem-sucedido!');
+
+        // Redirecionar para a home ("/")
+        this.router.navigate(['/']);
       },
       error => {
-        console.error(error); // Lide com erros de login aqui
+        console.error(error);
       }
     );
+  }
+
+  clearFields(): void {
+    this.username = '';
+    this.password = '';
   }
 }
