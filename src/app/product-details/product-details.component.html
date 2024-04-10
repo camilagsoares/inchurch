@@ -12,8 +12,17 @@
 
         <div class="details-container">
             <div class="title-description-container">
-                <h2 *ngIf="!isEditingTitle" class="product-title">{{ productDetails.title }}</h2>
-                <button *ngIf="!isEditing" (click)="enableEditing()" class="edit-button">Editar</button>
+                <div class="title-description-container">
+                    <h2 *ngIf="!isEditingTitle" class="product-title">{{ productDetails.title }}</h2>
+                    <!-- <input *ngIf="isEditingTitle" [(ngModel)]="editedTitle" class="product-title-input">
+                    <button *ngIf="!isEditingTitle" (click)="enableEditingTitle()" class="edit-button">Editar
+                        Título</button>
+                    <button *ngIf="isEditingTitle" (click)="saveTitle()" class="save-button">Salvar</button>
+                    <button *ngIf="isEditingTitle" (click)="cancelEditTitle()" class="cancel-button">Cancelar</button> -->
+                    <button (click)="openEditModal()" class="edit-button">Editar</button>
+
+                </div>
+
             </div>
             <p class="product-description">{{ productDetails.description }}</p>
             <div class="product-info">

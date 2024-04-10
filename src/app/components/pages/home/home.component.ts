@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     this.categories = Array.from(new Set(products.map(product => product.category)));
   }
 
-
+  showCart: boolean = false;
 
   extractBrands(products: any[]) {
     this.brands = Array.from(new Set(products.map(product => product.brand)));
@@ -157,5 +157,6 @@ export class HomeComponent implements OnInit {
         console.error('Error adding product to cart:', error);
 
       });
+      this.showCart = true;
   }
 }

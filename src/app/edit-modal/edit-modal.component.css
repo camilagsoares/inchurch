@@ -1,0 +1,50 @@
+/* Estilização do modal */
+.edit-modal {
+    text-align: center;
+    color: white;
+  }
+  
+  /* Estilização do título */
+  .edit-modal h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .edit-modal label {
+    margin-right: 10px;
+    color: white;
+
+  }
+  
+
+  
+  /* Estilização do input */
+  .edit-modal input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  /* Estilização dos botões */
+  .edit-modal button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-modal button.save {
+    background-color: #4CAF50; /* Cor verde */
+    color: white;
+  }
+  
+  .edit-modal button.cancel {
+    background-color: #f44336; /* Cor vermelha */
+    color: white;
+  }
+  

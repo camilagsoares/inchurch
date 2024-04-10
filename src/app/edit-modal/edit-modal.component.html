@@ -1,0 +1,11 @@
+
+<div class="edit-modal">
+    <h1>Editar produto</h1>
+    <div class="input-container">
+      <label for="title">Título:</label>
+      <input type="text" id="title" [(ngModel)]="editedData.title">
+    </div>
+    <button class="save" (click)="saveChanges()">Salvar</button>
+    <button class="cancel" (click)="cancelEdit()">Cancelar</button>
+  </div>
+  
