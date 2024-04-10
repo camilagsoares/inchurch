@@ -24,8 +24,10 @@ Para executar esta aplicação localmente, siga os passos abaixo:
 
 ```bash
 npm install
-
+```
 
 ## 2.  Rodar o Servidor de Desenvolvimento
 
+```bash 
 ng serve
+```
