@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
   productId: string | null = null;
-  productDetails: any;
+  productDetails: any = { selectedImage: '', images: [] }; // Começa com uma imagem vazia
+
   isEditing: boolean = false;
   isEditingTitle: boolean = false;
   editedTitle: string = '';
@@ -32,6 +33,10 @@ export class ProductDetailsComponent implements OnInit {
       .subscribe(product => {
         this.productDetails = product;
         this.editedTitle = product.title;
+        // Definir a primeira imagem como a imagem selecionada
+        if (product.images.length > 0) {
+          this.productDetails.selectedImage = product.images[0];
+        }
       });
   }
 
@@ -43,6 +48,8 @@ export class ProductDetailsComponent implements OnInit {
     this.isEditing = true;
     this.isEditingTitle = true;
   }
+
+  
 
   saveChanges() {
     if (this.productId) {
@@ -64,4 +71,16 @@ export class ProductDetailsComponent implements OnInit {
         );
     }
   }
+
+  // moveSlider(direction: string) {
+  //   const images = this.productDetails.images;
+  //   const currentIndex = images.indexOf(this.productDetails.selectedImage);
+  //   if (direction === 'next') {
+  //     const nextIndex = (currentIndex + 1) % images.length;
+  //     this.productDetails.selectedImage = images[nextIndex];
+  //   } else if (direction === 'prev') {
+  //     const prevIndex = (currentIndex - 1 + images.length) % images.length;
+  //     this.productDetails.selectedImage = images[prevIndex];
+  //   }
+  // }
 }
