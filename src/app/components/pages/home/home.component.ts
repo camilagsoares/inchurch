@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 14;
   selectedProduct: any = null;
+  faPlusCircle= faPlusCircle
 
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
@@ -112,7 +114,7 @@ export class HomeComponent implements OnInit {
           console.log(`Product ${productId} deleted on ${deletedProduct.deletedOn}`);
 
           this.filteredProducts = this.filteredProducts.filter((product: any) => product.id !== productId);
-          this.snackBar.open(`Produto ${productId} deletado com sucesso`, 'Close', {
+          this.snackBar.open(`Produto ${productId} deletado com sucesso`, 'Fechar', {
             duration: 3000,
           });
         } else {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatIconModule } from '@angular/material/icon'; 
+import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule ,
+    MatIconModule,
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
@@ -44,4 +45,4 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
