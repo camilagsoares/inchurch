@@ -1,6 +1,6 @@
 <div class="create-button-wrapper">
   <button (click)="redirectTo('/')" class="create-button">
-    <mat-icon>add_circle_outline</mat-icon>
+    <mat-icon  style="font-size: 18px;">arrow_back</mat-icon>
     Voltar para o início
   </button>
 </div>
@@ -28,19 +28,19 @@
 </div>
 
 
-<!-- Lista de produtos -->
-<div class="product-list-container">
-  <h2>Produtos:</h2>
-  <div *ngIf="productList.length > 0">
-    <ul class="product-list">
-      <li *ngFor="let product of productList">
-        {{ product.title }} - {{ product.price | currency }}<br>
-        {{ product.description }}
-      </li>
-    </ul>
-  </div>
-
-  <div *ngIf="productList.length === 0">
-    <p>Nenhum produto postado ainda.</p>
+<div class="container">
+  <div class="product-grid">
+    <h2>Produtos:</h2>
+    <div *ngIf="productList.length > 0">
+      <ul class="product-list">
+        <li *ngFor="let product of productList" class="product-card">
+          <h3 class="card-title">{{ product.title }} - {{ product.price | currency }}</h3>
+          <p class="card-text">{{ product.description }}</p>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="productList.length === 0">
+      <p>Nenhum produto postado ainda.</p>
+    </div>
   </div>
 </div>
