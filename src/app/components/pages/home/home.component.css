@@ -107,7 +107,7 @@ button:disabled:hover {
 }
 
 .btn-details:hover {
-  background-color:  rgb(62, 63, 55);
+  background-color: rgb(62, 63, 55);
 
 }
 
@@ -244,6 +244,28 @@ select {
   .select-wrapper select,
   .create-button {
     width: 100%;
-    margin-right: 0; 
+    margin-right: 0;
   }
+}
+
+.menu {
+  width: 300px;
+  height: 100%;
+  background-color: #6F7173;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* Menu escondido inicialmente */
+  transition: right 0.3s ease-in-out;
+}
+
+.menu.open {
+  right: 0;
+  /* Mostrar o menu quando isMenuOpen for true */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
