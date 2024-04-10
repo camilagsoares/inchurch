@@ -11,7 +11,7 @@
 
 .button-container {
   position: absolute;
-  bottom: 5px; 
+  bottom: 5px;
   left: 0;
   right: 0;
   display: flex;
@@ -24,7 +24,7 @@
   padding: 5px 3px;
   margin-top: 10px;
   width: 70px;
-  background-color: rgb(34, 142, 230);
+  background-color: rgb(87, 89, 78);
   color: white;
   border: none;
   border-radius: 3px;
@@ -62,7 +62,7 @@ button:disabled:hover {
 .product-grid {
   margin: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .product-card {
@@ -73,8 +73,8 @@ button:disabled:hover {
   position: relative;
   width: 250px;
   height: 320px;
-  margin: 10px; 
-  margin-bottom: 20px; 
+  margin: 10px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -106,27 +106,14 @@ button:disabled:hover {
   font-size: 16px;
 }
 
-
-/* .btn-details {
-  margin-top: 10px;
-  width: 70px;
-  background-color: rgb(34, 142, 230);
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 13px;
-} */
-
 .btn-details:hover {
-  background-color: rgb(29, 113, 182);
+  background-color:  rgb(62, 63, 55);
 
 }
 
 
 .btn-delete {
   margin-top: 10px;
-  /* padding: 5px 10px; */
   background-color: #E62222;
   color: white;
   border: none;
@@ -140,14 +127,13 @@ button:disabled:hover {
 }
 
 button {
-  padding: 0px 6px; 
-  font-size: 12px; 
+  padding: 0px 6px;
+  font-size: 12px;
   width: auto;
 }
 
 .btn-add-to-cart {
   margin-top: 10px;
-  /* padding: 5px 10px; */
   background-color: #A7CE4A;
   color: white;
   border: none;
@@ -233,6 +219,12 @@ select {
 }
 
 @media screen and (max-width: 600px) {
+  .position {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .filters-container {
     flex-direction: column;
   }
@@ -244,7 +236,7 @@ select {
   .search-bar-wrapper,
   .select-wrapper,
   .create-button-wrapper {
-    width: 250px; 
+    width: 100%;
     margin-bottom: 10px;
   }
 
@@ -252,5 +244,6 @@ select {
   .select-wrapper select,
   .create-button {
     width: 100%;
+    margin-right: 0; 
   }
 }
