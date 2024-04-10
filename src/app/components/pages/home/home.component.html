@@ -15,8 +15,11 @@
       <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
     </select>
   </div>
-  <button (click)="redirectTo('/post')">Adicionar Novo Produto</button>
-
+  
+  <button (click)="redirectTo('/post')">
+    <mat-icon>add_circle_outline</mat-icon>
+    Adicionar Novo Produto
+  </button>
 </div>
 <div *ngIf="selectedCategory" class="selected-category">
   <h2>Selected Category: {{ selectedCategory }}</h2>

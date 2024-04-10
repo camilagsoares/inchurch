@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatIconModule } from '@angular/material/icon'; // Importe MatIconModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,6 +31,7 @@ import { PostProductComponent } from './post-product/post-product.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatIconModule ,
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
