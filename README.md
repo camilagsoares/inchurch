@@ -61,7 +61,7 @@ ng serve
 
 ### Deploy:
 
-Para acessar a aplicação, <a href="https://project-inchurch.vercel.app/">clique aqui.</a>
+Para acessar a aplicação, <a href="https://inchurch.vercel.app/">clique aqui.</a>
 
 
 
