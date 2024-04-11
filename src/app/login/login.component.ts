@@ -32,7 +32,6 @@ export class LoginComponent {
           userData => {
             this.userData = userData;
             // Exiba os dados do usuário na tela como quiser
-            console.log('Dados do usuário:', this.userData);
             this.loading = false; // Define a flag para indicar que terminou de carregar
             if (this.userData && this.userData.username && this.userData.email) {
               // Exibe os dados do usuário em um alert

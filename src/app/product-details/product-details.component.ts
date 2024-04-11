@@ -144,7 +144,6 @@ editedDescription: string = '';
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result) {
         this.productDetails.title = result.title;
         this.productDetails.description = result.description;

@@ -1,6 +1,6 @@
 import { Component, TemplateRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar ,MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/login/auth.service';
 
@@ -33,9 +33,9 @@ export class HomeComponent implements OnInit {
   isMenuOpen: boolean = false;
   cart: Product[] = [];
   addedProductDetails: any = null;
+  produtosCarregados: boolean = false;
 
-
-  constructor(private router: Router, private snackBar: MatSnackBar, private authService: AuthService ) { }
+  constructor(private router: Router, private snackBar: MatSnackBar, private authService: AuthService) { }
 
 
 
@@ -53,8 +53,7 @@ export class HomeComponent implements OnInit {
         this.extractCategories(data.products);
         this.extractBrands(data.products);
         this.pageSize = Math.ceil(this.filteredProducts.length / Math.ceil(this.filteredProducts.length / 15));
-
-        console.log(data)
+        this.produtosCarregados = true;
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -133,8 +132,6 @@ export class HomeComponent implements OnInit {
       .then(res => res.json())
       .then(deletedProduct => {
         if (deletedProduct.isDeleted && deletedProduct.deletedOn) {
-          console.log(`Product ${productId} deleted on ${deletedProduct.deletedOn}`);
-
           this.filteredProducts = this.filteredProducts.filter((product: any) => product.id !== productId);
           this.snackBar.open(`Produto ${productId} deletado com sucesso`, 'Fechar', {
             duration: 3000,
@@ -183,15 +180,12 @@ export class HomeComponent implements OnInit {
       })
         .then(res => res.json())
         .then(newProduct => {
-          console.log('Product added to cart:', newProduct);
-
           fetch(`https://dummyjson.com/products/${productId}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
           })
             .then(res => res.json())
             .then(productDetails => {
-              console.log('Product details:', productDetails);
               const productWithQuantity = { ...productDetails, quantity: 1 };
               this.cart.push(productWithQuantity);
               this.isMenuOpen = true;
@@ -211,9 +205,9 @@ export class HomeComponent implements OnInit {
     if (index !== -1) {
       const product = this.cart[index];
       if (product.quantity > 1) {
-        product.quantity--; 
+        product.quantity--;
       } else {
-        this.cart.splice(index, 1); 
+        this.cart.splice(index, 1);
       }
     }
   }
@@ -236,6 +230,7 @@ export class HomeComponent implements OnInit {
     config.panelClass = ['custom-snackbar']; // Aplica a classe personalizada
     this.snackBar.open(message, 'Fechar', config);
   }
+
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

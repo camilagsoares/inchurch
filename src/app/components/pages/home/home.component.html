@@ -25,7 +25,7 @@
 </div>
 
 
-<div *ngIf="paginatedProducts.length > 0; else noProducts">
+<div *ngIf="produtosCarregados && paginatedProducts.length > 0; else noProducts">
   <div class="position">
     <div class="product-grid">
       <div class="card product-card" *ngFor="let product of paginatedProducts" (click)="goToProductDetails(product.id)">
@@ -70,10 +70,10 @@
 
   <div class="pagination">
     <button (click)="previousPage()" [disabled]="currentPage === 1">
-      <i class="material-icons">chevron_left</i> Previous
+      <i class="material-icons">chevron_left</i>Anterior 
     </button>
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">
-      Next <i class="material-icons">chevron_right</i>
+      Próximo   <i class="material-icons">chevron_right</i>
     </button>
   </div>
 
@@ -85,4 +85,3 @@
   </div>
 </ng-template>
 
-<app-footer></app-footer>

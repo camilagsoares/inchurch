@@ -54,7 +54,6 @@ export class PostProductComponent implements OnInit {
     this.productService.addProduct(this.productData)
       .subscribe(
         response => {
-          console.log('Novo produto adicionado:', response);
           this.productList.push(response);
           this.showProductList = true;
           this.productData = {
