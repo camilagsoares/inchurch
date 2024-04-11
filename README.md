@@ -1,7 +1,19 @@
 
 # InChurch
 
+Antes de começar, é importante observar que as funcionalidades exigem que o usuário esteja logado.
+
+# Informações Login
+
+Você pode usar as credenciais de qualquer usuário de <a href="https://dummyjson.com/users">dummyjson.com/users</a>. Exemplo:
+
+**username:** kminchelle <br />
+**password:** 0lelplR
+
+<hr />
+
 Esta é uma aplicação de E-commerce desenvolvida com Angular, CSS e JavaScript, oferecendo as seguintes funcionalidades:
+
 
 * **Adicionar Produtos ao Carrinho:** É possível adicionar um ou vários produtos ao carrinho.
 
@@ -18,6 +30,8 @@ Esta é uma aplicação de E-commerce desenvolvida com Angular, CSS e JavaScript
 * **CRUD de Produtos:** Operações completas de Create, Read, Update, Delete.
 
 * **Página Detalhes do Produto:** Cada produto possui uma página detalhada com informações abrangentes.
+
+* **Página do Usuário:** Os usuários têm acesso a uma página detalhada com informações pessoais e configurações da conta.
 
 <hr />
 
@@ -38,11 +52,5 @@ npm i --legacy-peer-deps
 ng serve
 ```
 
-<hr />
 
-# Informações Login
 
-Você pode usar as credenciais de qualquer usuário de <a href="https://dummyjson.com/users">dummyjson.com/users</a>. Exemplo:
-
-**username:** kminchelle <br />
-**password:** 0lelplR
