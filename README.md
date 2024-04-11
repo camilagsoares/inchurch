@@ -3,7 +3,7 @@
 
 Antes de começar, é importante observar que as funcionalidades exigem que o usuário esteja logado.
 
-# Informações Login
+## Informações Login
 
 Você pode usar as credenciais de qualquer usuário de <a href="https://dummyjson.com/users">dummyjson.com/users</a>. Exemplo:
 
