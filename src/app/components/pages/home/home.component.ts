@@ -166,6 +166,11 @@ export class HomeComponent implements OnInit {
   }
 
   redirectTo(route: string) {
+    if (!this.authService.isLoggedIn()) {
+      alert('Você precisa estar logado para acessar esta funcionalidade.');
+      return;
+    }
+    
     this.router.navigate([route]);
   }
 
