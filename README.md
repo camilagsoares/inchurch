@@ -25,7 +25,7 @@ Esta é uma aplicação de E-commerce que lista produtos da API Dummy JSON. Dese
 
 * **Filtros por Marca, Categoria e Pesquisa:** Os usuários podem filtrar os produtos por marca, categoria ou realizar uma pesquisa por palavra-chave.
 
-* **Login:** Sistema de autenticação.
+* **Login:** Sistema de autenticação. Também foi desenvolvido a Atualização de Sessão de Autenticação.
 
 * **CRUD de Produtos:** Operações completas de Create, Read, Update, Delete.
 
