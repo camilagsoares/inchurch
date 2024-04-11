@@ -4,6 +4,7 @@ import { ProductService } from './product.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { EditModalComponent } from '../edit-modal/edit-modal.component'; 
+import { AuthService } from '../login/auth.service';
 
 @Component({
   selector: 'app-product-details',
@@ -28,7 +29,8 @@ editedDescription: string = '';
     private productService: ProductService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -130,6 +132,10 @@ editedDescription: string = '';
   }
 
   openEditModal(): void {
+    if (!this.authService.isLoggedIn()) {
+      alert('Você precisa estar logado para editar o produto.');
+      return;
+    }
     const dialogRef = this.dialog.open(EditModalComponent, {
       width: '500px',
       height: '270px',

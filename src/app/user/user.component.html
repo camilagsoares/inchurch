@@ -1,3 +1,8 @@
+<button (click)="redirectTo('/')" class="create-button">
+  <mat-icon style="font-size: 20px;">keyboard_arrow_left</mat-icon>
+  Voltar para o início
+</button>
+
 <div *ngIf="userData" class="profile-container">
   <h2>Informações do Perfil</h2>
   <p class="profile-info"><strong>Nome:</strong> <span>{{ userData.firstName }} {{userData.maidenName}}

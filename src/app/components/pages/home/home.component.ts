@@ -1,7 +1,8 @@
 import { Component, TemplateRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar ,MatSnackBarConfig } from '@angular/material/snack-bar';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/login/auth.service';
 
 interface Product {
   id: number;
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
   addedProductDetails: any = null;
 
 
-  constructor(private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private snackBar: MatSnackBar, private authService: AuthService ) { }
 
 
 
@@ -120,6 +121,12 @@ export class HomeComponent implements OnInit {
   deleteProduct(event: Event, productId: number) {
     event.stopPropagation();
 
+    if (!this.authService.isLoggedIn()) {
+      // Verifica se o usuário está logado
+      alert('Você precisa estar logado para excluir produtos.');
+      return;
+    }
+
     fetch(`https://dummyjson.com/products/${productId}`, {
       method: 'DELETE',
     })
@@ -159,6 +166,11 @@ export class HomeComponent implements OnInit {
 
   addToCart(event: Event, productId: number) {
     event.stopPropagation();
+
+    if (!this.authService.isLoggedIn()) {
+      alert('Você precisa estar logado para adicionar produtos ao carrinho.');
+      return;
+    }
 
     const existingProductIndex = this.cart.findIndex(product => product.id === productId);
     if (existingProductIndex !== -1) {
@@ -218,7 +230,12 @@ export class HomeComponent implements OnInit {
       product.quantity--;
     }
   }
-
+  openSnackBar(message: string) {
+    const config = new MatSnackBarConfig();
+    config.duration = 3000; // Define a duração do snackbar
+    config.panelClass = ['custom-snackbar']; // Aplica a classe personalizada
+    this.snackBar.open(message, 'Fechar', config);
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

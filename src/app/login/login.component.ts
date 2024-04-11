@@ -39,7 +39,7 @@ export class LoginComponent {
               alert(`Bem vindo (a): ${this.userData.firstName} ${this.userData.lastName}`);
               setTimeout(() => {
                 this.router.navigate(['/']);
-              }, 2000);
+              }, 1000);
             } else {
               console.log('Erro ao obter os dados do usuário.');
             }
