@@ -7,7 +7,10 @@
     </div>
     <div *ngIf="productDetails" class="product-details">
         <div class="image-container">
-            <img [src]="productDetails.thumbnail" alt="Imagem do Produto" class="product-image">
+          
+            <mat-progress-spinner *ngIf="!imageLoaded" color="accent" mode="indeterminate"></mat-progress-spinner>
+
+            <img [src]="productDetails.thumbnail" class="product-image" (load)="onImageLoad()">
         </div>
 
         <div class="details-container">

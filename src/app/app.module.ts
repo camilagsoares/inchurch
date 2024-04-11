@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { UserComponent } from './user/user.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -41,6 +42,8 @@ import { UserComponent } from './user/user.component';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

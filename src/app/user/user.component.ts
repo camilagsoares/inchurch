@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
     );
   }
 
- 
+
   redirectTo(route: string) {
     this.router.navigate([route]);
   }
