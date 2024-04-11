@@ -14,7 +14,6 @@ export class EditModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<EditModalComponent>
   ) {
-    // Inicialize os campos editáveis com os dados recebidos
     this.editedData = { ...data };
   }
 
@@ -22,12 +21,10 @@ export class EditModalComponent implements OnInit {
   }
 
   saveChanges(): void {
-    // Feche o modal e retorne os dados editados
     this.dialogRef.close(this.editedData);
   }
 
   cancelEdit(): void {
-    // Feche o modal sem salvar alterações
     this.dialogRef.close();
   }
 }

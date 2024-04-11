@@ -10,7 +10,7 @@ interface Product {
   brand: string;
   images: string[];
   price: number;
-  quantity: number; // Add quantity property
+  quantity: number; 
 }
 
 @Component({
@@ -121,7 +121,6 @@ export class HomeComponent implements OnInit {
     event.stopPropagation();
 
     if (!this.authService.isLoggedIn()) {
-      // Verifica se o usuário está logado
       alert('Você precisa estar logado para excluir produtos.');
       return;
     }
@@ -226,8 +225,8 @@ export class HomeComponent implements OnInit {
   }
   openSnackBar(message: string) {
     const config = new MatSnackBarConfig();
-    config.duration = 3000; // Define a duração do snackbar
-    config.panelClass = ['custom-snackbar']; // Aplica a classe personalizada
+    config.duration = 3000; 
+    config.panelClass = ['custom-snackbar'];
     this.snackBar.open(message, 'Fechar', config);
   }
 

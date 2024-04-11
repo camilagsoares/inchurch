@@ -7,10 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private token: string = ''; // Armazene o token aqui
+  private token: string = ''; 
 
   constructor(private http: HttpClient) {
-    // Recupera o token do localStorage ao inicializar o serviço, se existir
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
       this.token = storedToken;
@@ -25,21 +24,19 @@ export class AuthService {
   }
 
   setToken(token: string): void {
-    this.token = token; // Defina o token após o login
+    this.token = token; 
     localStorage.setItem('token', token); 
   }
 
   getToken(): string {
-    return this.token; // Obtenha o token
+    return this.token; 
   }
 
   isLoggedIn(): boolean {
-    // Verifica se o token está presente e não está vazio
     return !!this.token;
   }
 
   logout(): void {
-    // Remove o token do localStorage e do serviço
     localStorage.removeItem('token');
     this.token = '';
   }
