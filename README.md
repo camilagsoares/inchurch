@@ -12,7 +12,7 @@ Você pode usar as credenciais de qualquer usuário de <a href="https://dummyjso
 
 <hr />
 
-Esta é uma aplicação de E-commerce desenvolvida com Angular, CSS e JavaScript, oferecendo as seguintes funcionalidades:
+Esta é uma aplicação de E-commerce que lista dados da API Dummy JSON. Desenvolvida com Angular, CSS e JavaScript, oferecendo as seguintes funcionalidades:
 
 
 * **Adicionar Produtos ao Carrinho:** É possível adicionar um ou vários produtos ao carrinho.
@@ -25,13 +25,13 @@ Esta é uma aplicação de E-commerce desenvolvida com Angular, CSS e JavaScript
 
 * **Filtros por Marca, Categoria e Pesquisa:** Os usuários podem filtrar os produtos por marca, categoria ou realizar uma pesquisa por palavra-chave.
 
-* **Login:** Sistema de autenticação que permite aos usuários acessarem recursos personalizados.
+* **Login:** Sistema de autenticação.
 
 * **CRUD de Produtos:** Operações completas de Create, Read, Update, Delete.
 
-* **Página Detalhes do Produto:** Cada produto possui uma página detalhada com informações abrangentes.
+* **Página Detalhes do Produto:** Cada produto possui uma página detalhada com as informações.
 
-* **Página do Usuário:** Os usuários têm acesso a uma página detalhada com informações pessoais e configurações da conta.
+* **Página do Usuário:** Os usuários têm acesso a uma página com informações pessoais.
 
 <hr />
 
