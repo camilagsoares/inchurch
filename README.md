@@ -52,5 +52,11 @@ npm i --legacy-peer-deps
 ng serve
 ```
 
+<hr />
+
+### Deploy:
+
+Para acessar a aplicação, <a href="https://project-inchurch.vercel.app/">clique aqui.</a>
+
 
 
