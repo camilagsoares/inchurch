@@ -68,7 +68,7 @@
   </div>
   
 
-  <div class="pagination">
+  <div class="pagination"  *ngIf="totalPages > 1">
     <button (click)="previousPage()" [disabled]="currentPage === 1">
       <i class="material-icons">chevron_left</i>Anterior 
     </button>

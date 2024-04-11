@@ -260,10 +260,27 @@ select {
   background-color: #6F7173;
   position: fixed;
   top: 0;
-  max-height: calc(100vh - 40px); 
-  overflow-y: auto; 
+  max-height: 120vh; 
+  overflow-y: auto;
   right: -300px;
   transition: right 0.3s ease-in-out;
+}
+
+.menu::-webkit-scrollbar {
+  width: 12px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 6px; 
+}
+
+.menu::-webkit-scrollbar-track {
+  background-color: #f1f1f1; 
+}
+
+.menu {
+  scrollbar-width: thin; 
 }
 
 .menu.open {
