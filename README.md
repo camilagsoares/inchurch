@@ -41,3 +41,8 @@ ng serve
 <hr />
 
 # Informações Login
+
+Você pode usar as credenciais de qualquer usuário de <a href="https://dummyjson.com/users">dummyjson.com/users</a>. Exemplo:
+
+username: kminchelle
+password: 0lelplR
