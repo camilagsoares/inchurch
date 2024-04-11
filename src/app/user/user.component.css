@@ -1,0 +1,21 @@
+.profile-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #fff; 
+    margin: 20px 0;
+  }
+  
+  .profile-info {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info strong {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .profile-info span {
+    color: #333;
+  }
+  

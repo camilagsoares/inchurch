@@ -10,7 +10,7 @@
 
     </li>
     <li id="add">
-      <a routerLink="/user">Meu Perfil</a>
+      <a routerLink="/user"  *ngIf="isLoggedIn()">Meu Perfil</a>
     </li>
   </ul>
 </nav>
