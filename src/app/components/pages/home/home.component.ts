@@ -5,8 +5,11 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 interface Product {
   id: number;
-  name: string;
-  quantity: number;
+  title: string;
+  brand: string;
+  images: string[];
+  price: number;
+  quantity: number; // Add quantity property
 }
 
 @Component({
@@ -156,37 +159,64 @@ export class HomeComponent implements OnInit {
 
   addToCart(event: Event, productId: number) {
     event.stopPropagation();
-    fetch('https://dummyjson.com/products/add', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: productId
+
+    const existingProductIndex = this.cart.findIndex(product => product.id === productId);
+    if (existingProductIndex !== -1) {
+      this.cart[existingProductIndex].quantity++;
+    } else {
+      fetch('https://dummyjson.com/products/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: productId })
       })
-    })
-      .then(res => res.json())
-      .then(newProduct => {
-        console.log('Product added to cart:', newProduct);
+        .then(res => res.json())
+        .then(newProduct => {
+          console.log('Product added to cart:', newProduct);
 
-        fetch(`https://dummyjson.com/products/${productId}`, {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json' }
-        })
-          .then(res => res.json())
-          .then(productDetails => {
-            console.log('Product details:', productDetails);
-             this.addedProductDetails = productDetails; 
-
+          fetch(`https://dummyjson.com/products/${productId}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
           })
-          .catch(error => {
-            console.error('Error fetching product details:', error);
-          });
+            .then(res => res.json())
+            .then(productDetails => {
+              console.log('Product details:', productDetails);
+              const productWithQuantity = { ...productDetails, quantity: 1 };
+              this.cart.push(productWithQuantity);
+              this.isMenuOpen = true;
+            })
+            .catch(error => {
+              console.error('Error fetching product details:', error);
+            });
+        })
+        .catch(error => {
+          console.error('Error adding product to cart:', error);
+        });
+    }
+  }
 
-        this.isMenuOpen = true;
-      })
-      .catch(error => {
-        console.error('Error adding product to cart:', error);
-      });
-    this.showCart = true;
+  removeFromCart(productId: number) {
+    const index = this.cart.findIndex(product => product.id === productId);
+    if (index !== -1) {
+      const product = this.cart[index];
+      if (product.quantity > 1) {
+        product.quantity--; 
+      } else {
+        this.cart.splice(index, 1); 
+      }
+    }
+  }
+  increaseQuantity(productId: number) {
+    const product = this.cart.find(p => p.id === productId);
+    if (product) {
+      product.quantity++;
+    }
+  }
+
+  decreaseQuantity(productId: number) {
+    const product = this.cart.find(p => p.id === productId);
+    if (product && product.quantity > 1) {
+      product.quantity--;
+    }
   }
 
 

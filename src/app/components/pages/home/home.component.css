@@ -254,14 +254,14 @@ select {
   background-color: #6F7173;
   position: fixed;
   top: 0;
+  max-height: calc(100vh - 40px); 
+  overflow-y: auto; 
   right: -300px;
-  /* Menu escondido inicialmente */
   transition: right 0.3s ease-in-out;
 }
 
 .menu.open {
   right: 0;
-  /* Mostrar o menu quando isMenuOpen for true */
 }
 
 .close-button {
@@ -269,3 +269,4 @@ select {
   top: 10px;
   right: 10px;
 }
+

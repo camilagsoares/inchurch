@@ -46,21 +46,22 @@
   </div>
 
   <!-- <button (click)="toggleMenu()">Abrir Menu</button> -->
-
   <div class="menu" [ngClass]="{'open': isMenuOpen}">
     <button (click)="toggleMenu()" class="close-button">Fechar</button>
     <ul>
-      <div *ngIf="addedProductDetails">
-        <h3>Detalhes do Produto Adicionado:</h3>
-        <p>{{ addedProductDetails.title }}</p>
-        <p>{{ addedProductDetails.brand }}</p>
-        <img [src]="addedProductDetails.thumbnail" alt="Product Image" class="product-image">
-
-        <p>Preço: {{ addedProductDetails.price }}</p>
-      </div>
+      <li *ngFor="let product of cart" class="product-card-cart">
+        <h3>{{ product.title }}</h3>
+        <p>Marca: {{ product.brand }}</p>
+        <img [src]="product.images[0]" alt="Imagem do Produto" class="product-image">
+        <p>Preço: {{ product.price }}</p>
+        <p>Quantidade: {{ product.quantity }}</p>
+        <button (click)="increaseQuantity(product.id)">+</button>
+        <button (click)="decreaseQuantity(product.id)">-</button>
+        <button (click)="removeFromCart(product.id)">Remover</button>
+      </li>
     </ul>
   </div>
-
+  
   
 
   
