@@ -37,6 +37,11 @@ Esta é uma aplicação de E-commerce que lista dados da API Dummy JSON. Desenvo
 
 # Como Rodar a Aplicação
 
+### Pré-requisitos
+
+- Node.js (v12.11.1 ou superior)
+- Angular CLI (v13.1.2 ou superior)
+
 Para executar esta aplicação localmente, siga os passos abaixo:
 
 ## 1. Instalar Dependências
