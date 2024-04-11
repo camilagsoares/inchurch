@@ -80,8 +80,8 @@
 </div>
 
 <ng-template #noProducts>
-  <div>
-    <p>No products found.</p>
-  </div>
+     <div *ngIf="!paginatedProducts.length && filteredProducts.length === 0">
+      <p>Nenhum produto encontrado.</p>
+    </div>
 </ng-template>
 

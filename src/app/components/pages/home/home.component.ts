@@ -10,7 +10,7 @@ interface Product {
   brand: string;
   images: string[];
   price: number;
-  quantity: number; 
+  quantity: number;
 }
 
 @Component({
@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit {
   cart: Product[] = [];
   addedProductDetails: any = null;
   produtosCarregados: boolean = false;
+  loading: boolean = false;
+  noProductsFound: boolean = false;
 
   constructor(private router: Router, private snackBar: MatSnackBar, private authService: AuthService) { }
 
@@ -54,10 +56,17 @@ export class HomeComponent implements OnInit {
         this.extractBrands(data.products);
         this.pageSize = Math.ceil(this.filteredProducts.length / Math.ceil(this.filteredProducts.length / 15));
         this.produtosCarregados = true;
+        this.loading = false;
+        this.checkNoProductsFound();
       })
       .catch(error => {
         console.error('Error fetching data:', error);
+        this.loading = false;
       });
+  }
+
+  checkNoProductsFound() {
+    this.noProductsFound = this.filteredProducts.length === 0;
   }
 
   extractCategories(products: any[]) {
@@ -225,7 +234,7 @@ export class HomeComponent implements OnInit {
   }
   openSnackBar(message: string) {
     const config = new MatSnackBarConfig();
-    config.duration = 3000; 
+    config.duration = 3000;
     config.panelClass = ['custom-snackbar'];
     this.snackBar.open(message, 'Fechar', config);
   }

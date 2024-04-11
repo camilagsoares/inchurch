@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { EditModalComponent } from '../edit-modal/edit-modal.component'; 
+import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { AuthService } from '../login/auth.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthService } from '../login/auth.service';
 })
 export class ProductDetailsComponent implements OnInit {
   productId: string | null = null;
-  productDetails: any = { selectedImage: '', images: [] }; 
+  productDetails: any = { selectedImage: '', images: [] };
   isEditingPrice: boolean = false;
   isEditingStock: boolean = false;
   isEditingCategory: boolean = false;
@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
   isEditingTitle: boolean = false;
   editedTitle: string = '';
   isEditingDescription: boolean = false;
-editedDescription: string = '';
+  editedDescription: string = '';
+  imageLoaded: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
@@ -31,7 +32,7 @@ editedDescription: string = '';
     private cdr: ChangeDetectorRef,
     private dialog: MatDialog,
     private authService: AuthService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -48,6 +49,7 @@ editedDescription: string = '';
 
         if (product.images.length > 0) {
           this.productDetails.selectedImage = product.images[0];
+          this.imageLoaded = true; 
         }
       });
   }
@@ -139,10 +141,10 @@ editedDescription: string = '';
     const dialogRef = this.dialog.open(EditModalComponent, {
       width: '500px',
       height: '270px',
-     data: { title: this.productDetails.title, description: this.productDetails.description /* outros campos aqui */ }
+      data: { title: this.productDetails.title, description: this.productDetails.description  }
 
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.productDetails.title = result.title;
@@ -154,13 +156,13 @@ editedDescription: string = '';
   enableEditingDescription() {
     this.isEditingDescription = true;
   }
-  
+
   saveDescription() {
     if (this.productId) {
       const updatedData = {
         description: this.editedDescription
       };
-  
+
       this.productService.updateProduct(this.productId, updatedData)
         .subscribe(
           (updatedProduct) => {
@@ -173,7 +175,11 @@ editedDescription: string = '';
         );
     }
   }
-  
+
+  onImageLoad() {
+    this.imageLoaded = true;
+  }
+
   cancelEditDescription() {
     this.editedDescription = this.productDetails.description;
     this.isEditingDescription = false;
