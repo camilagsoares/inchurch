@@ -1,7 +1,13 @@
-import { Component, TemplateRef, OnInit , ViewChild } from '@angular/core';
+import { Component, TemplateRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+
+interface Product {
+  id: number;
+  name: string;
+  quantity: number;
+}
 
 @Component({
   selector: 'app-home',
@@ -21,12 +27,15 @@ export class HomeComponent implements OnInit {
   selectedProduct: any = null;
   faPlusCircle = faPlusCircle
   isMenuOpen: boolean = false;
+  cart: Product[] = [];
+  addedProductDetails: any = null;
+
 
   constructor(private router: Router, private snackBar: MatSnackBar) { }
 
 
 
-  
+
   ngOnInit() {
     this.getData();
   }
@@ -157,15 +166,30 @@ export class HomeComponent implements OnInit {
       .then(res => res.json())
       .then(newProduct => {
         console.log('Product added to cart:', newProduct);
-        this.isMenuOpen = true; 
+
+        fetch(`https://dummyjson.com/products/${productId}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' }
+        })
+          .then(res => res.json())
+          .then(productDetails => {
+            console.log('Product details:', productDetails);
+             this.addedProductDetails = productDetails; 
+
+          })
+          .catch(error => {
+            console.error('Error fetching product details:', error);
+          });
+
+        this.isMenuOpen = true;
       })
       .catch(error => {
         console.error('Error adding product to cart:', error);
-
       });
     this.showCart = true;
   }
-  
+
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
