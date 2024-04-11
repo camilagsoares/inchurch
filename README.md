@@ -29,7 +29,7 @@ Para executar esta aplicação localmente, siga os passos abaixo:
 
 
 ```bash
-npm install
+npm i --legacy-peer-deps
 ```
 
 ## 2.  Rodar o Servidor de Desenvolvimento
