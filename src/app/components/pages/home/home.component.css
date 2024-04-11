@@ -72,7 +72,7 @@ button:disabled:hover {
   overflow: hidden;
   position: relative;
   width: 250px;
-  height: 320px;
+  height: 340px;
   margin: 10px;
   margin-bottom: 20px;
   position: relative;
@@ -265,8 +265,43 @@ select {
 }
 
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: absolute; 
+  top: 0; 
+  right: 0;
+  font-size: 18px;
 }
 
+.product-card-cart {
+  background-color: white;
+  border: 1px solid #ddd; 
+  width: 300px; 
+  margin: 40px auto;
+}
+
+.product-image-cart  {
+  width: 100px;
+  height: auto;
+  float: left; 
+  margin-right: 10px; 
+}
+
+.product-info-cart  {
+  overflow: hidden;
+}
+
+.product-details-cart  {
+  float: left;
+
+  p{
+    font-size: 14px;
+  }
+}
+
+.product-actions {
+  clear: both;
+  margin-top: 10px; 
+}
+
+.product-actions button {
+  margin-right: 5px; 
+}
