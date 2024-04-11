@@ -5,7 +5,12 @@
   </a>
   <ul class="links">
     <li id="add">
-      <a routerLink="/login">Login</a>
+      <a routerLink="/login" *ngIf="!isLoggedIn()">Login</a>
+     <a *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+
+    </li>
+    <li id="add">
+      <a routerLink="/user">Meu Perfil</a>
     </li>
   </ul>
 </nav>

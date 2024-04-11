@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
 import { PostProductComponent } from './post-product/post-product.component';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     LoginComponent,
     PostProductComponent,
     EditModalComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
